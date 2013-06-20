@@ -1,0 +1,25 @@
+[user]
+  name = Adam Daniels
+  email = adam@mediadrive.ca
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  type = cat-file -t
+  dump = cat-file -p
+  changelog = log -n25 --no-merges --date=short --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd)%Creset'
+  g = grep --break --heading --line-number
+[credential]
+  helper = osxkeychain
+[core]
+  excludesfile = ~/.cvsignore
+  editor = vim
+[push]
+  default = tracking
+[pull]
+  rebase = true
+[grep]
+  extendRegexp = true
+  lineNumber = true

@@ -1,0 +1,13 @@
+.bundle
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+Thumbs.db
+vendor/bundle
+*.swp
+*.un~
+.exrc
+tags
