@@ -11,7 +11,7 @@ filetype plugin on
 compiler ruby
 
 set laststatus=2
-set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
+set rtp+=~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim
 
 " Basic options ----------------------------------------------
 set encoding=utf-8

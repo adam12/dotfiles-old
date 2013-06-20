@@ -1,3 +1,4 @@
+. ~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -46,7 +47,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
-PATH=/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
+PATH=~/Library/Python/2.7/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
 
 # chruby
 source /usr/local/opt/chruby/share/chruby/{chruby,auto}.sh
@@ -69,6 +70,6 @@ eval "$(hub alias -s)"
 unsetopt correct_all
 
 # Fix slow git autocomplete
-__git_files () { 
+__git_files () {
     _wanted files expl 'local files' _files     
 }
