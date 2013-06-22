@@ -1,13 +1,38 @@
 " This must be first
 set nocompatible
+filetype off
 
 " Essentials -------------------------------------------------
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-execute pathogen#infect()
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rails'
+Bundle 'mileszs/ack.vim'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'kien/ctrlp.vim'
+Bundle 'pangloss/vim-javascript'
+Bundle 'godlygeek/tabular'
+Bundle 'tpope/vim-bundler'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-eunuch'
+Bundle 'tpope/vim-rake'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-rhubarb'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-sensible'
+Bundle 'tpope/vim-sleuth'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-tbone'
+Bundle 'tpope/vim-unimpaired'
+
 syntax on
-filetype on
-filetype indent on
-filetype plugin on
+filetype plugin indent on
 compiler ruby
 
 set laststatus=2
