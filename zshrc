@@ -6,7 +6,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="adam"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -41,7 +41,7 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git bundler)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -50,7 +50,8 @@ source $ZSH/oh-my-zsh.sh
 PATH=~/Library/Python/2.7/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
 
 # chruby
-source /usr/local/opt/chruby/share/chruby/{chruby,auto}.sh
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/opt/chruby/share/chruby/auto.sh
 
 # aliases
 alias redis.server='redis-server /usr/local/etc/redis.conf'

@@ -23,6 +23,10 @@ set splitbelow
 set splitright
 set autoindent
 
+" Backup/Swap settings
+set backupdir=~/.vim/backup/
+set directory=~/.vim/backup/
+
 " Fix backspace
 set backspace=start,indent,eol
 fixdel
