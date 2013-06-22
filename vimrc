@@ -30,6 +30,8 @@ Bundle 'tpope/vim-sleuth'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-tbone'
 Bundle 'tpope/vim-unimpaired'
+Bundle 'christoomey/vim-tmux-navigator'
+
 
 syntax on
 filetype plugin indent on
