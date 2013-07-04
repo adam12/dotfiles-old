@@ -38,7 +38,7 @@ filetype plugin indent on
 compiler ruby
 
 set laststatus=2
-set rtp+=~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim
+set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
 
 " Basic options ----------------------------------------------
 set encoding=utf-8
@@ -69,8 +69,10 @@ set clipboard=unnamed
 set foldmethod=marker
 set foldlevelstart=99
 
-set shell=/bin/bash\ -l     " avoids munging PATH under zsh
-let g:is_bash=1             " default shell syntax
+"set shell=/bin/bash\ -l     " avoids munging PATH under zsh
+"let g:is_bash=1             " default shell syntax
+
+set shell=$SHELL\ -l
 
 " Enable exrc and make sure it's secure
 set exrc

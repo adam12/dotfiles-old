@@ -1,4 +1,4 @@
-. ~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
+. /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -47,7 +47,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
-PATH=~/Library/Python/2.7/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
+PATH=/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
 
 # chruby
 source /usr/local/opt/chruby/share/chruby/chruby.sh
