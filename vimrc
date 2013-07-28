@@ -6,6 +6,9 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+" Setup go syntax highlights
+set rtp+=$GOROOT/misc/vim
+
 " let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 
@@ -31,7 +34,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-tbone'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'christoomey/vim-tmux-navigator'
-
+Bundle 'avakhov/vim-yaml'
 
 syntax on
 filetype plugin indent on
@@ -62,7 +65,7 @@ fixdel
 set list listchars=tab:»·,trail:·
 
 " Clipboard fix for OSX
-set clipboard=unnamed
+"set clipboard=unnamed
 
 " Folding
 "set foldmethod=indent
