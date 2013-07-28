@@ -74,3 +74,6 @@ unsetopt correct_all
 __git_files () {
     _wanted files expl 'local files' _files     
 }
+
+export GOROOT=$(brew --prefix go)
+export GOPATH=~/go
