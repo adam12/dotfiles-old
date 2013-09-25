@@ -8,6 +8,8 @@ Icon?
 Thumbs.db
 vendor/bundle
 *.swp
+*.swo
 *.un~
 .exrc
 tags
+tmp
