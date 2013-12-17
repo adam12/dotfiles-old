@@ -11,6 +11,7 @@
   dump = cat-file -p
   changelog = log -n25 --no-merges --date=short --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd)%Creset'
   g = grep --break --heading --line-number
+	ctags = !.git/hooks/ctags
 [credential]
   helper = osxkeychain
 [core]
@@ -23,3 +24,5 @@
 [grep]
   extendRegexp = true
   lineNumber = true
+[init]
+	templatedir = ~/.git_template
