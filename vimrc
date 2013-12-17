@@ -35,6 +35,14 @@ Bundle 'tpope/vim-tbone'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'avakhov/vim-yaml'
+Bundle 'tpope/vim-markdown'
+Bundle 'duff/vim-scratch'
+Bundle 'ap/vim-css-color'
+Bundle 'scrooloose/nerdtree'
+" Bundle 'spf13/PIV'
+" Bundle 'scrooloose/syntastic'
+Bundle 'dsawardekar/ember.vim'
+Bundle 'mustache/vim-mode'
 
 syntax on
 filetype plugin indent on
