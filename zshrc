@@ -83,3 +83,6 @@ export GOPATH=~/code/go
 export PATH=$GOPATH/bin:$PATH
 eval $(go env | grep GOROOT)
 export PATH=$GOROOT/bin:$PATH
+
+# zsh syntax highlighting
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
