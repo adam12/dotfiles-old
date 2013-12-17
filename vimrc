@@ -6,9 +6,6 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" Setup go syntax highlights
-set rtp+=$GOROOT/misc/vim
-
 " let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 
@@ -40,16 +37,16 @@ Bundle 'duff/vim-scratch'
 Bundle 'ap/vim-css-color'
 Bundle 'scrooloose/nerdtree'
 " Bundle 'spf13/PIV'
-" Bundle 'scrooloose/syntastic'
-Bundle 'dsawardekar/ember.vim'
+Bundle 'scrooloose/syntastic'
 Bundle 'mustache/vim-mode'
+Bundle 'bling/vim-airline'
 
 syntax on
 filetype plugin indent on
 compiler ruby
 
 set laststatus=2
-set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
+" set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
 
 " Basic options ----------------------------------------------
 set encoding=utf-8
@@ -62,10 +59,18 @@ set ttyfast                 " send more characters for redraws
 set splitbelow
 set splitright
 set autoindent
+set copyindent
+" set tabstop=4
+" set shiftwidth=4
+
 
 " Backup/Swap settings
-set backupdir=~/.vim/backup/
-set directory=~/.vim/backup/
+" set backupdir=~/.vim/backup/
+" set directory=~/.vim/backup/
+" Turn backup off, since most stuff is in SVN, git et.c anyway...
+set nobackup
+set nowb
+set noswapfile
 
 " Fix backspace
 set backspace=start,indent,eol
@@ -82,9 +87,8 @@ set list listchars=tab:»·,trail:·
 set foldmethod=marker
 set foldlevelstart=99
 
-"set shell=/bin/bash\ -l     " avoids munging PATH under zsh
-"let g:is_bash=1             " default shell syntax
-
+" set shell=/bin/bash\ -l     " avoids munging PATH under zsh
+" let g:is_bash=1             " default shell syntax
 set shell=$SHELL\ -l
 
 " Enable exrc and make sure it's secure
@@ -113,7 +117,7 @@ colorscheme railscasts
 
 " Text Formatting -------------------------------------------
 set nowrap                  " don't wrap lines
-set smarttab                " sw at the start of the line, sts everywhere else
+"set smarttab                " sw at the start of the line, sts everywhere else
 set showmatch               " show matching parenthesis
 
 " Searching
@@ -147,7 +151,7 @@ if has("autocmd")
         \| exe "normal! g`\"" | endif
 
   " mark Jekyll YAML frontmatter as comment
-  au BufNewFile,BufRead *.{md,markdown,html,xml} sy match Comment /\%^---\_.\{-}---$/
+  au BufNewFile,BufRead *.{md,markdown,html,xml,erb} sy match Comment /\%^---\_.\{-}---$/
 
 
   au FileType ruby
@@ -169,12 +173,14 @@ if has("autocmd")
 
   augroup ft_ruby
     au!
-    au FileType ruby setlocal foldmethod=syntax
+    " au FileType ruby setlocal foldmethod=syntax
     au BufNewFile,BufRead {Vagrantfile,Guardfile,Capfile,Thorfile,pryrc,config.ru} setlocal filetype=ruby
   augroup END
 
-  au FileType eruby setlocal ts=4 sts=4 sw=2 nolist
-  au FileType coffee setlocal ts=2 sts=2 sw=2 et
+  " au FileType eruby setlocal ts=4 sts=4 sw=2 nolist
+  " au FileType coffee setlocal ts=2 sts=2 sw=2 et
+  au FileType xhtml,html,htm,php,xml setlocal ts=4 sw=4 sts=4 et
+  au BufEnter *.ldg,*.ledger setlocal ft=ledger fp=ledger\ -f\ -\ print
 endif
 
 " Mappings -----------------------------------------------------
@@ -214,8 +220,30 @@ vnoremap <Space> za
 noremap <leader>y "*y"
 
 " Paste from OS X pasteboard without messing up indent
-nnoremap <leader>p :set paste<CR>"*p<CR>:set nopate<CR>
+nnoremap <leader>p :set paste<CR>"*p<CR>:set nopaste<CR>
 nnoremap <leader>P :set paste<cr>"*P<CR>:set nopaste<CR>
+
+" Return to last edit position when opening files (You want this!)
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
+
+" Remember info about open buffers on close
+set viminfo^=%
+
+" Spell checking -----------------------------------------------
+" Pressing ,ss will toggle and untoggle spell checking
+map <leader>ss :setlocal spell!<cr>
+"
+" " Shortcuts using <leader>
+map <leader>sn ]s
+map <leader>sp [s
+map <leader>sa zg
+map <leader>s? z=
+
+" Toggle paste mode on and off
+map <leader>pp :setlocal paste!<cr>
 
 " Plugin settings ----------------------------------------------
 let g:netrw_dirhistmax = 0
@@ -223,3 +251,16 @@ let g:netrw_dirhistmax = 0
 let g:netrw_list_hide = '\~$,^tags$,^\.bundle/$,^\.git/$'
 let g:ctrlp_root_markers = ['.git', 'tag']
 let g:ackprg = 'ag --nogroup --nocolor --column'
+
+" Airline Settings
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
