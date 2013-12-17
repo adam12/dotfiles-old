@@ -55,7 +55,11 @@ source /usr/local/opt/chruby/share/chruby/auto.sh
 
 # aliases
 alias redis.server='redis-server /usr/local/etc/redis.conf'
-alias pg.server='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias pg.server='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log'
+alias rabbitmq.server='rabbitmq-server'
+alias mongodb.server='mongod'
+alias influxdb.server='influxdb -config=/usr/local/etc/influxdb.conf'
+alias bower='noglob bower'
 
 # ruby tweaks
 export RUBY_HEAP_MIN_SLOTS=1000000
