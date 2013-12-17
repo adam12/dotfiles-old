@@ -79,5 +79,7 @@ __git_files () {
     _wanted files expl 'local files' _files     
 }
 
-export GOROOT=$(brew --prefix go)
-export GOPATH=~/go
+export GOPATH=~/code/go
+export PATH=$GOPATH/bin:$PATH
+eval $(go env | grep GOROOT)
+export PATH=$GOROOT/bin:$PATH
