@@ -53,6 +53,8 @@ set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
 
 " Basic options ----------------------------------------------
 set encoding=utf-8
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
 set autoread                " auto-reload buffers when file changed on disk
 set hidden                  " allow switching buffers without writing to disk
 set visualbell
