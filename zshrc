@@ -61,6 +61,11 @@ alias mongodb.server='mongod'
 alias influxdb.server='influxdb -config=/usr/local/etc/influxdb.conf'
 alias bower='noglob bower'
 
+# functions
+function gzipcheck() {
+    curl -I -H "Accept-Encoding: gzip,deflate" --silent $@ | grep --color "Content-Encoding:"
+}
+
 # ruby tweaks
 export RUBY_HEAP_MIN_SLOTS=1000000
 export RUBY_HEAP_SLOTS_INCREMENT=1000000
