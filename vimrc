@@ -47,7 +47,6 @@ filetype plugin indent on
 compiler ruby
 
 set laststatus=2
-" set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
 
 " Basic options ----------------------------------------------
 set encoding=utf-8
@@ -267,3 +266,4 @@ let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
+
