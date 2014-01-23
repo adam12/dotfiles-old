@@ -251,6 +251,7 @@ map <leader>pp :setlocal paste!<cr>
 let g:netrw_dirhistmax = 0
 " let g:netrw_use_errorwindow = 0 " don't create a new window for error messages
 let g:netrw_list_hide = '\~$,^tags$,^\.bundle/$,^\.git/$'
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_root_markers = ['.git', 'tag']
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
