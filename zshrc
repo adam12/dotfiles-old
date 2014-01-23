@@ -59,6 +59,7 @@ alias pg.server='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/se
 alias rabbitmq.server='rabbitmq-server'
 alias mongodb.server='mongod'
 alias influxdb.server='influxdb -config=/usr/local/etc/influxdb.conf'
+alias memcache.server='/usr/local/opt/memcached/bin/memcached'
 alias bower='noglob bower'
 
 # functions
