@@ -40,6 +40,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'mustache/vim-mode'
 Bundle 'bling/vim-airline'
+Bundle 'jnwhiteh/vim-golang'
 
 syntax on
 filetype plugin indent on
@@ -114,7 +115,6 @@ set background=dark
 
 colorscheme railscasts
 
-
 " Text Formatting -------------------------------------------
 set nowrap                  " don't wrap lines
 "set smarttab                " sw at the start of the line, sts everywhere else
@@ -181,6 +181,9 @@ if has("autocmd")
   " au FileType coffee setlocal ts=2 sts=2 sw=2 et
   au FileType xhtml,html,htm,php,xml setlocal ts=4 sw=4 sts=4 et
   au BufEnter *.ldg,*.ledger setlocal ft=ledger fp=ledger\ -f\ -\ print
+
+  " au FileType go autocmd BufWritePre <buffer> Fmt
+  au FileType go set makeprg=go\ build nolist
 endif
 
 " Mappings -----------------------------------------------------
