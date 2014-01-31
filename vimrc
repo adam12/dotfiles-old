@@ -35,12 +35,15 @@ Bundle 'avakhov/vim-yaml'
 Bundle 'tpope/vim-markdown'
 Bundle 'duff/vim-scratch'
 Bundle 'ap/vim-css-color'
-Bundle 'scrooloose/nerdtree'
+Bundle 'tpope/vim-vinegar'
 " Bundle 'spf13/PIV'
-Bundle 'scrooloose/syntastic'
+" Bundle 'scrooloose/syntastic'
 Bundle 'mustache/vim-mode'
 Bundle 'bling/vim-airline'
 Bundle 'jnwhiteh/vim-golang'
+" Bundle 'tpope/vim-dispatch'
+Bundle 'Lokaltog/vim-distinguished'
+Bundle 'dhruvasagar/vim-railscasts-theme'
 
 syntax on
 filetype plugin indent on
@@ -102,7 +105,6 @@ set history=1000
 let mapleader=","
 
 " Appearance -------------------------------------------------
-set t_Co=256
 set title
 set ruler                   " show the cursor position at all time
 set cursorline              " highlight the line of the cursor
@@ -113,6 +115,13 @@ set ttymouse=xterm2
 set background=dark
 
 colorscheme railscasts
+
+if &term =~ '256color'
+  " disable Background Color Erase (BCE) so that color schemes
+  " render properly when inside 256-color tmux and GNU screen.
+  " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+  set t_ut=
+endif
 
 " Text Formatting -------------------------------------------
 set nowrap                  " don't wrap lines
@@ -130,9 +139,10 @@ set wildmenu
 set wildmode=list:longest,list:full
 set complete=.,w,b
 " ignore Rubinus, Sass cache files
-set wildignore+=tmp/**,*.rbc,.rbx,*.scssc,*.sassc
+set wildignore+=tmp/cache/**,*.rbc,.rbx,*.scssc,*.sassc
 " ignore Bundler standalone/vendor installs & gems
-set wildignore+=*/.bundle/*,*/vendor/bundle/*,*/vendor/cache/*,*/.sass-cache/*
+set wildignore+=.bundle/*,*/vendor/bundle/*,*/vendor/cache/*,*/.sass-cache/*
+set wildignore+=*~,tags,.git/*,.DS_Store
 
 if has("autocmd")
   " In Makefiles, use real tabs, not tabs expanded to spaces
@@ -152,17 +162,7 @@ if has("autocmd")
   " mark Jekyll YAML frontmatter as comment
   au BufNewFile,BufRead *.{md,markdown,html,xml,erb} sy match Comment /\%^---\_.\{-}---$/
 
-
-  au FileType ruby
-        \ if expand('%') =~# '_test\.rb$' |
-        \   compiler rubyunit | setl makeprg=testrb\ \"%:p\" |
-        \ elseif expand('%') =~# '_spec\.rb$' |
-        \   compiler rspec | setl makeprg=rspec\ \"%:p\" |
-        \ else |
-        \   compiler ruby | setl makeprg=ruby\ -wc\ \"%:p\" |
-        \ endif
-  au User Bundler
-        \ if &makeprg !~# 'bundle' | setl makeprg^=bundle\ exec\  | endif
+  au FileType ruby set sw=2 sts=2 et
 
   " Save when losing focus
   au FocusLost * :silent! wall
@@ -183,6 +183,8 @@ if has("autocmd")
 
   " au FileType go autocmd BufWritePre <buffer> Fmt
   au FileType go set makeprg=go\ build nolist
+
+  au FileType qf set nolist
 endif
 
 " Mappings -----------------------------------------------------
@@ -249,8 +251,6 @@ map <leader>pp :setlocal paste!<cr>
 
 " Plugin settings ----------------------------------------------
 let g:netrw_dirhistmax = 0
-" let g:netrw_use_errorwindow = 0 " don't create a new window for error messages
-let g:netrw_list_hide = '\~$,^tags$,^\.bundle/$,^\.git/$'
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_root_markers = ['.git', 'tag']
 let g:ackprg = 'ag --nogroup --nocolor --column'
@@ -267,4 +267,3 @@ let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
-
