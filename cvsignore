@@ -13,3 +13,4 @@ vendor/bundle
 .exrc
 tags
 tmp
+.sass-cache
