@@ -60,6 +60,7 @@ alias rabbitmq.server='rabbitmq-server'
 alias mongodb.server='mongod'
 alias influxdb.server='influxdb -config=/usr/local/etc/influxdb.conf'
 alias memcache.server='/usr/local/opt/memcached/bin/memcached'
+alias beanstalk.server='beanstalkd'
 alias bower='noglob bower'
 
 # functions
