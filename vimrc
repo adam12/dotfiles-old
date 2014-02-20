@@ -44,6 +44,7 @@ Bundle 'jnwhiteh/vim-golang'
 " Bundle 'tpope/vim-dispatch'
 Bundle 'Lokaltog/vim-distinguished'
 Bundle 'dhruvasagar/vim-railscasts-theme'
+Bundle 'ledger/vim-ledger'
 
 syntax on
 filetype plugin indent on
@@ -179,7 +180,7 @@ if has("autocmd")
   " au FileType eruby setlocal ts=4 sts=4 sw=2 nolist
   " au FileType coffee setlocal ts=2 sts=2 sw=2 et
   au FileType xhtml,html,htm,php,xml setlocal ts=4 sw=4 sts=4 et
-  au BufEnter *.ldg,*.ledger setlocal ft=ledger fp=ledger\ -f\ -\ print
+  au BufEnter *.ldg,*.ledger setlocal ft=ledger fp=ledger\ -f\ -\ -S\ d\ print
 
   " au FileType go autocmd BufWritePre <buffer> Fmt
   au FileType go set makeprg=go\ build nolist
