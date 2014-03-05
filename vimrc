@@ -45,6 +45,7 @@ Bundle 'jnwhiteh/vim-golang'
 Bundle 'Lokaltog/vim-distinguished'
 Bundle 'dhruvasagar/vim-railscasts-theme'
 Bundle 'ledger/vim-ledger'
+Bundle 'krisajenkins/vim-pipe'
 
 syntax on
 filetype plugin indent on
@@ -225,8 +226,8 @@ vnoremap <Space> za
 noremap <leader>y "*y"
 
 " Paste from OS X pasteboard without messing up indent
-nnoremap <leader>p :set paste<CR>"*p<CR>:set nopaste<CR>
-nnoremap <leader>P :set paste<cr>"*P<CR>:set nopaste<CR>
+" nnoremap <leader>p :set paste<CR>"*p<CR>:set nopaste<CR>
+" nnoremap <leader>P :set paste<cr>"*P<CR>:set nopaste<CR>
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
@@ -268,3 +269,6 @@ let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
+
+let g:vimpipe_invoke_map="<Leader>r"
+let g:vimpipe_close_map="<Leader>p"
