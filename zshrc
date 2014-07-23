@@ -88,6 +88,8 @@ __git_files () {
 
 # Variables
 export EDITOR=vim
+# a better LESS
+export LESS="-FRSX"
 
 # Go config
 export GOPATH=~/code/go

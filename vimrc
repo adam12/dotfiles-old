@@ -1,55 +1,12 @@
+" Load pathogen from bundle path
+runtime bundle/pathogen/autoload/pathogen.vim
+
 " This must be first
 set nocompatible
 filetype off
 
 " Essentials -------------------------------------------------
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" let Vundle manage Vundle
-Plugin 'gmarik/vundle'
-
-"Plugin 'tpope/vim-fugitive'
-Plugin 'file:///Users/adamdaniels/tmp/vim-fugitive'
-Plugin 'tpope/vim-rails'
-"Plugin 'mileszs/ack.vim'
-Plugin 'kchmck/vim-coffee-script'
-"Plugin 'kien/ctrlp.vim'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Shougo/unite.vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'godlygeek/tabular'
-Plugin 'tpope/vim-bundler'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-rake'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-rhubarb'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-sleuth'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-tbone'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'avakhov/vim-yaml'
-Plugin 'tpope/vim-markdown'
-Plugin 'duff/vim-scratch'
-Plugin 'ap/vim-css-color'
-Plugin 'tpope/vim-vinegar'
-" Plugin 'spf13/PIV'
-" Plugin 'scrooloose/syntastic'
-Plugin 'mustache/vim-mode'
-Plugin 'bling/vim-airline'
-Plugin 'jnwhiteh/vim-golang'
-" Plugin 'tpope/vim-dispatch'
-Plugin 'Lokaltog/vim-distinguished'
-Plugin 'dhruvasagar/vim-railscasts-theme'
-Plugin 'ledger/vim-ledger'
-Plugin 'krisajenkins/vim-pipe'
-
+execute pathogen#infect()
 syntax on
 filetype plugin indent on
 compiler ruby
