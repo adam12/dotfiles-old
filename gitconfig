@@ -26,4 +26,7 @@
   extendRegexp = true
   lineNumber = true
 [init]
-	templatedir = ~/.git_template
+  templatedir = ~/.git_template
+[status]
+[color]
+  ui = auto
