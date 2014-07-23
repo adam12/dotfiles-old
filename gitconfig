@@ -11,7 +11,8 @@
   dump = cat-file -p
   changelog = log -n25 --no-merges --date=short --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd)%Creset'
   g = grep --break --heading --line-number
-	ctags = !.git/hooks/ctags
+  ctags = !.git/hooks/ctags
+  treelog = log --all --graph --decorate --oneline --abbrev-commit
 [credential]
   helper = osxkeychain
 [core]
