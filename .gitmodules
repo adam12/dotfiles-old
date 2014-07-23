@@ -61,6 +61,6 @@
 [submodule "vim/bundle/pipe"]
 	path = vim/bundle/pipe
 	url = https://github.com/krisajenkins/vim-pipe.git
-[submodule "git/bundle/dispatch"]
-	path = git/bundle/dispatch
+[submodule "vim/bundle/dispatch"]
+	path = vim/bundle/dispatch
 	url = https://github.com/tpope/vim-dispatch.git
