@@ -16,3 +16,6 @@ tmp
 .sass-cache
 .direnv
 .envrc
+
+# Drupal
+/sites/default/settings.php
