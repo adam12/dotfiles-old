@@ -99,3 +99,6 @@ export PATH=$GOROOT/bin:$PATH
 
 # zsh syntax highlighting
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Setup direnv hook
+eval "$(direnv hook $0)"
