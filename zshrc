@@ -1,59 +1,24 @@
-. /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
-
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="adam"
-
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
-
-# Comment this out to disable bi-weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment to change how often before auto-updates occur? (in days)
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment following line if you want to disable command autocorrection
-# DISABLE_CORRECTION="true"
-
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment following line if you want to disable marking untracked files under
-# VCS as dirty. This makes repository status check for large repositories much,
-# much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
-
-source $ZSH/oh-my-zsh.sh
-
-# Customize to your needs...
-
-PATH=/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
-
-# chruby
+### Sources
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 source /usr/local/opt/chruby/share/chruby/chruby.sh
 source /usr/local/opt/chruby/share/chruby/auto.sh
+source /usr/local/share/gem_home/gem_home.sh
 
-# aliases
+### Variables
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.zsh_history
+export EDITOR=vim
+export LESS="-FRSX"         # A better less
+
+typeset -U path # Ensure unique entries in path
+path=(/usr/local/bin /usr/local/sbin /usr/local/share/npm/bin . $path)
+
+### Aliases
+alias grep='grep --colour=auto'
+alias egrep='egrep --colour=auto'
+alias ls='ls -G'
 alias redis.server='redis-server /usr/local/etc/redis.conf'
 alias pg.server='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log'
 alias rabbitmq.server='rabbitmq-server'
@@ -62,43 +27,78 @@ alias influxdb.server='influxdb -config=/usr/local/etc/influxdb.conf'
 alias memcache.server='/usr/local/opt/memcached/bin/memcached'
 alias beanstalk.server='beanstalkd'
 alias bower='noglob bower'
+alias gst='git status'
 
-# functions
+### Functions
 function gzipcheck() {
     curl -I -H "Accept-Encoding: gzip,deflate" --silent $@ | grep --color "Content-Encoding:"
 }
 
-# ruby tweaks
-# export RUBY_HEAP_MIN_SLOTS=1000000
-# export RUBY_HEAP_SLOTS_INCREMENT=1000000
-# export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
-# export RUBY_GC_MALLOC_LIMIT=100000000
-# export RUBY_HEAP_FREE_MIN=500000
-
-# hub
-eval "$(hub alias -s)"
-
-# Disable correct all -- it's more a pain than anything
-unsetopt correct_all
-
-# Fix slow git autocomplete
-__git_files () {
-    _wanted files expl 'local files' _files     
+function reload() {
+    exec "${SHELL}" "$@"
 }
 
-# Variables
-export EDITOR=vim
-# a better LESS
-export LESS="-FRSX"
+# coloured manuals
+function man() {
+  env \
+    LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+    LESS_TERMCAP_md=$(printf "\e[1;31m") \
+    LESS_TERMCAP_me=$(printf "\e[0m") \
+    LESS_TERMCAP_se=$(printf "\e[0m") \
+    LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+    LESS_TERMCAP_ue=$(printf "\e[0m") \
+    LESS_TERMCAP_us=$(printf "\e[1;32m") \
+    man "$@"
+}
 
+### Hooks
+eval "$(hub alias -s)"
+eval "$(direnv hook $0)"
+eval "$(npm completion 2>/dev/null)"
+
+### ZSH modules
+autoload -U zargs           # zargs, as a alternative to find -exec and xargs
+autoload -U zcalc           # calculator
+autoload -U zmv             # zmc, a command for renaming files by means of shell patterns
+autoload -U compinit        # command completion
+autoload -U promptinit      # coloured prompts
+autoload -U run-help        # no built-in support for the help command
+autoload run-help-git run-help svn run-help-svk
+
+### ZSH options
+compinit                    # command completion
+#promptinit                 # coloured prompts
+setopt completealiases      # autocomplete command line switches for aliases
+setopt extended_history     # save each commands timestamp and duration in the history file
+setopt hist_verify          # after successful history completion, perform history expansion and reload line into buffer
+setopt inc_append_history   # append history log as it happens, not at shell exit
+setopt hist_ignore_dups     # prevent putting duplicate lines in history
+setopt hist_ignore_space    # prevent record in history if prepended with at least one space
+setopt share_history        #
+unalias run-help            # we need run-help elsewhere
+alias help=run-help         # alias run-help to help
+setopt extendedglob         # add lots of glob goodies
+setopt interactivecomments  # ignore lines prefixed with '#'
+setopt noflowcontrol        # disable flow control
+setopt promptsubst          # command substition in prompt (and parameter expansion and arithmetic expansion)
+
+# Control-x-e to open current line in $EDITOR, awesome when writting functions or editing multiline commands.
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^x^e' edit-command-line
+
+### Other
 # Go config
 export GOPATH=~/code/go
 export PATH=$GOPATH/bin:$PATH
 eval $(go env | grep GOROOT)
 export PATH=$GOROOT/bin:$PATH
 
-# zsh syntax highlighting
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# complete on installed rubies
+_chruby() { compadd $(chruby | tr -d '* ') }
+compdef _chruby chruby
 
-# Setup direnv hook
-eval "$(direnv hook $0)"
+# Make zsh know about hosts already accessed by SSH
+zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
+
+# vim:sw=4:ts=4:sts=4:et:
