@@ -1,6 +1,8 @@
+### Function paths
+fpath=(~/code/dotfiles/zsh/functions $fpath)
+
 ### Sources
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 source /usr/local/opt/chruby/share/chruby/chruby.sh
 source /usr/local/opt/chruby/share/chruby/auto.sh
 source /usr/local/share/gem_home/gem_home.sh
@@ -38,6 +40,30 @@ function reload() {
     exec "${SHELL}" "$@"
 }
 
+function copy_function() {
+    test -n "$(declare -f $1)" || return
+    eval "${_/$1/$2}"
+}
+
+function rename_function() {
+    copy_function $@ || return
+    unset -f $1
+}
+
+rename_function gem_home_push gem_home_push2
+rename_function gem_home_pop gem_home_pop2
+
+function gem_home_push() {
+    export GEM_HOME_PUSHED=$1
+    gem_home_push2 "$@"
+}
+
+function gem_home_pop() {
+    unset GEM_HOME_PUSHED
+    gem_home_pop2 "$@"
+}
+
+
 # coloured manuals
 function man() {
   env \
@@ -57,6 +83,7 @@ eval "$(direnv hook $0)"
 eval "$(npm completion 2>/dev/null)"
 
 ### ZSH modules
+autoload -U colors
 autoload -U zargs           # zargs, as a alternative to find -exec and xargs
 autoload -U zcalc           # calculator
 autoload -U zmv             # zmc, a command for renaming files by means of shell patterns
@@ -67,7 +94,8 @@ autoload run-help-git run-help svn run-help-svk
 
 ### ZSH options
 compinit                    # command completion
-#promptinit                 # coloured prompts
+promptinit                  # coloured prompts
+colors                      # enable colours
 setopt completealiases      # autocomplete command line switches for aliases
 setopt extended_history     # save each commands timestamp and duration in the history file
 setopt hist_verify          # after successful history completion, perform history expansion and reload line into buffer
@@ -86,6 +114,9 @@ setopt promptsubst          # command substition in prompt (and parameter expans
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^x^e' edit-command-line
+
+# Use my prompt
+prompt adam
 
 ### Other
 # Go config
