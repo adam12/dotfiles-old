@@ -109,7 +109,7 @@ function man() {
 }
 
 ### Hooks
-eval "$(hub alias -s)"
+eval "$(gh alias -s)"
 eval "$(direnv hook $0)"
 eval "$(npm completion 2>/dev/null)"
 
