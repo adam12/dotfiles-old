@@ -79,6 +79,3 @@
 [submodule "vim/bundle/nimrod.vim"]
 	path = vim/bundle/nimrod.vim
 	url = https://github.com/zah/nimrod.vim.git
-[submodule "vim/bundle/direnv.vim"]
-	path = vim/bundle/direnv.vim
-	url = git@github.com:zimbatm/direnv.vim.git
