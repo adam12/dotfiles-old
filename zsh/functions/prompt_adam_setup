@@ -18,7 +18,7 @@ precmd() {
     vcs_info    # Get version control info
 
     [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
-    [[ -n "$RUBY_ENGINE" ]] && psvar[2]="$RUBY_ENGINE-$RUBY_VERSION"
+    [[ -n "$RUBY_VERSION" ]] && psvar[2]="$RUBY_VERSION"
     [[ -n "$GEM_HOME_PUSHED" ]] && psvar[3]="$GEM_HOME_PUSHED"
 }
 
@@ -27,7 +27,8 @@ precmd() {
 # RPROMPT=' %2v %(3v.Y.)'
 
 PROMPT='%F{15}%K{32} %B%4~ %b%K{237}%F{32} %F{15}%(1V.[%1v].) %f%k%F{237}%f '
-RPROMPT='%(?..%F{red}%F{15}%K{red} %?) %F{237}%F{15}%K{237} %2v %(3v.%F{10}♦.%F{red}♦) %f%k'
+#RPROMPT='%(?..%F{red}%F{15}%K{red} %?) %F{237}%F{15}%K{237} %2v %(3v.%F{10}♦.%F{red}♦) %f%k'
+RPROMPT='%(?..%F{red}%F{15}%K{red} %?) %F{237}%F{15}%K{237} %2v %f%k'
 
 #   ✔ ✗
 # vim:ts=4:sts=4:sw=4:et:ft=conf:

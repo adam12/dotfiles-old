@@ -4,8 +4,6 @@ fpath=(~/code/dotfiles/zsh/functions $fpath)
 ### Sources
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/local/opt/chruby/share/chruby/chruby.sh
-source /usr/local/opt/chruby/share/chruby/auto.sh
-source /usr/local/share/gem_home/gem_home.sh
 
 ### Variables
 HISTSIZE=1000
@@ -71,30 +69,6 @@ function gzipcheck() {
 function reload() {
     exec "${SHELL}" "$@"
 }
-
-function copy_function() {
-    test -n "$(declare -f $1)" || return
-    eval "${_/$1/$2}"
-}
-
-function rename_function() {
-    copy_function $@ || return
-    unset -f $1
-}
-
-rename_function gem_home_push gem_home_push2
-rename_function gem_home_pop gem_home_pop2
-
-function gem_home_push() {
-    export GEM_HOME_PUSHED=$1
-    gem_home_push2 "$@"
-}
-
-function gem_home_pop() {
-    unset GEM_HOME_PUSHED
-    gem_home_pop2 "$@"
-}
-
 
 # coloured manuals
 function man() {
