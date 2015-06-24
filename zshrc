@@ -139,4 +139,21 @@ compdef _chruby chruby
 # Make zsh know about hosts already accessed by SSH
 zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
 
+# Configure GPG
+GPG_ENV="$HOME/.gpg-agent-env"
+if ! gpg-connect-agent --quiet /bye >/dev/null 2>&1; then
+    if [ -f "${GPG_ENV}" ]; then
+        source ${GPG_ENV}
+        export GPG_AGENT_INFO
+    fi
+
+    # Try connecting again incase we sourced valid data
+    if ! gpg-connect-agent --quiet /bye > /dev/null 2>&1; then
+        eval $(gpg-agent --daemon --write-env-file ${GPG_ENV})
+        export GPG_AGENT_INFO
+    fi
+fi
+GPG_TTY=$(tty)
+export GPG_TTY
+
 # vim:sw=4:ts=4:sts=4:et:
