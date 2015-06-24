@@ -156,4 +156,7 @@ fi
 GPG_TTY=$(tty)
 export GPG_TTY
 
+# Laravel
+PATH=~/.composer/vendor/bin:$PATH
+
 # vim:sw=4:ts=4:sts=4:et:
