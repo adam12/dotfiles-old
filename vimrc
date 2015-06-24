@@ -25,13 +25,9 @@ set splitbelow
 set splitright
 set autoindent
 set copyindent
-" set tabstop=4
-" set shiftwidth=4
 
 
 " Backup/Swap settings
-" set backupdir=~/.vim/backup/
-" set directory=~/.vim/backup/
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
 set nobackup
 set nowb
@@ -48,13 +44,8 @@ set list listchars=tab:»·,trail:·
 "set clipboard=unnamed
 
 " Folding
-"set foldmethod=indent
 set foldmethod=marker
 set foldlevelstart=99
-
-" set shell=/bin/bash\ -l     " avoids munging PATH under zsh
-" let g:is_bash=1             " default shell syntax
-set shell=$SHELL\ -l
 
 " Enable exrc and make sure it's secure
 set exrc
@@ -76,7 +67,7 @@ set mouse=a
 set ttymouse=xterm2
 set background=dark
 
-colorscheme railscasts
+colorscheme apprentice
 
 if &term =~ '256color'
   " disable Background Color Erase (BCE) so that color schemes
@@ -216,6 +207,8 @@ let g:netrw_dirhistmax = 0
 
 nnoremap <C-p> :<C-u>Unite file_rec buffer<CR>
 nnoremap <space>/ :<C-u>Unite grep:.<CR>
+nnoremap <leader>f :<C-u>Unite -start-insert file<CR>
+nnoremap <leader>s :%s/\s\+$<CR>
 
 " Airline Settings
 if !exists('g:airline_symbols')
