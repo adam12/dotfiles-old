@@ -67,3 +67,18 @@
 [submodule "vim/bundle/coffee-script"]
 	path = vim/bundle/coffee-script
 	url = https://github.com/kchmck/vim-coffee-script.git
+[submodule "vim/bundle/vim-slim"]
+	path = vim/bundle/vim-slim
+	url = https://github.com/slim-template/vim-slim.git
+[submodule "vim/bundle/vim-elixir"]
+	path = vim/bundle/vim-elixir
+	url = https://github.com/elixir-lang/vim-elixir.git
+[submodule "vim/bundle/vim-stylus"]
+	path = vim/bundle/vim-stylus
+	url = https://github.com/wavded/vim-stylus.git
+[submodule "vim/bundle/nimrod.vim"]
+	path = vim/bundle/nimrod.vim
+	url = https://github.com/zah/nimrod.vim.git
+[submodule "vim/bundle/direnv.vim"]
+	path = vim/bundle/direnv.vim
+	url = git@github.com:zimbatm/direnv.vim.git
