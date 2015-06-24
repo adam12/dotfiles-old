@@ -138,6 +138,9 @@ if has("autocmd")
   au FileType go set makeprg=go\ build nolist
 
   au FileType qf set nolist
+
+  " Vue
+  autocmd BufNewFile,BufReadPost *.vue set filetype=html
 endif
 
 " Mappings -----------------------------------------------------
@@ -175,6 +178,10 @@ vnoremap <Space> za
 
 " Yank to OS X pasteboard
 noremap <leader>y "*y"
+
+" Faster indentation
+nnoremap > >>
+nnoremap < <<
 
 " Paste from OS X pasteboard without messing up indent
 " nnoremap <leader>p :set paste<CR>"*p<CR>:set nopaste<CR>
