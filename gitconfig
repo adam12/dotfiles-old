@@ -13,6 +13,7 @@
   g = grep --break --heading --line-number
   ctags = !.git/hooks/ctags
   treelog = log --all --graph --decorate --oneline --abbrev-commit
+  aa = add --all
 [credential]
   helper = osxkeychain
 [core]
