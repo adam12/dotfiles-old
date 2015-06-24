@@ -14,6 +14,7 @@ export LESS="-FRSX"         # A better less
 export CLICOLOR=1
 export LSCOLORS=Gxfxcxdxbxegedabagacad
 export LS_COLORS=Gxfxcxdxbxegedabagacad
+export PATH=~/bin:$PATH
 #export PAGER=less
 
 typeset -U path # Ensure unique entries in path
