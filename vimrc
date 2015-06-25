@@ -142,18 +142,6 @@ endif
 
 " Mappings -----------------------------------------------------
 
-" Remap all arrow keys
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-nnoremap j gj
-nnoremap k gk
-
 " ,v to reselect text that was just pasted
 nnoremap <leader>v V`]
 
