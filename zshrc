@@ -37,6 +37,12 @@ alias rake='noglob rake'        # necessary to make rake work inside of zsh
 alias ri='noglob ri -f ansi'    # search Ruby documentation
 alias loco="grep -v '^#' | grep -v '^$' | wc -l"  # count lines of actual code, without comments or blank lines
 
+# Network Aliases
+alias dnsi='scutil --dns'
+alias dnss='sudo dscacheutil -statistics'
+alias dnsf='sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder && printf "DNS cache cleared\n"'
+
+
 ### Functions
 # compressed file expander (from https://github.com/myfreeweb/zshuery/blob/master/zshuery.sh)
 function extract() {
