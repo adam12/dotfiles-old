@@ -79,3 +79,6 @@
 [submodule "vim/bundle/nimrod.vim"]
 	path = vim/bundle/nimrod.vim
 	url = https://github.com/zah/nimrod.vim.git
+[submodule "vim/bundle/vim-crystal"]
+	path = vim/bundle/vim-crystal
+	url = https://github.com/rhysd/vim-crystal.git
