@@ -1,5 +1,7 @@
+# vim:sw=4:ts=4:sts=4:et:
+
 ### Function paths
-fpath=(~/code/dotfiles/zsh/functions $fpath)
+fpath=(~/.zsh/functions $fpath)
 
 ### Sources
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -36,6 +38,8 @@ alias gst='git status'
 alias rake='noglob rake'        # necessary to make rake work inside of zsh
 alias ri='noglob ri -f ansi'    # search Ruby documentation
 alias loco="grep -v '^#' | grep -v '^$' | wc -l"  # count lines of actual code, without comments or blank lines
+alias vim='nvim'
+
 
 # Network Aliases
 alias dnsi='scutil --dns'
@@ -75,6 +79,10 @@ function gzipcheck() {
 
 function reload() {
     exec "${SHELL}" "$@"
+}
+
+function fetch() {
+    curl -O -L $@
 }
 
 # coloured manuals
@@ -165,4 +173,4 @@ export GPG_TTY
 # Laravel
 PATH=~/.composer/vendor/bin:$PATH
 
-# vim:sw=4:ts=4:sts=4:et:
+[ -f ~/.zshrc_local ] && source ~/.zshrc_local

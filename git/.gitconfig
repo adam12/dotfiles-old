@@ -9,11 +9,14 @@
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   type = cat-file -t
   dump = cat-file -p
-  changelog = log -n25 --no-merges --date=short --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd)%Creset'
+  #changelog = log -n25 --no-merges --date=short --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd)%Creset'
   g = grep --break --heading --line-number
   ctags = !.git/hooks/ctags
   treelog = log --all --graph --decorate --oneline --abbrev-commit
   aa = add --all
+  dc = diff --cached
+  di = diff
+  pullff = pull --ff-only
 [credential]
   helper = osxkeychain
 [core]
@@ -31,3 +34,9 @@
 [status]
 [color]
   ui = auto
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[rebase]
+	autosquash = true

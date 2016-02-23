@@ -141,6 +141,9 @@ if has("autocmd")
 
   " Vue
   autocmd BufNewFile,BufReadPost *.vue set filetype=html
+
+  " Crystal
+  " autocmd BufNewFile,BufReadPost *.cr set filetype=ruby
 endif
 
 " Mappings -----------------------------------------------------
